@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Jugador Actualizado{% endblock %}
+{% block header %}Jugador Actualizado{% endblock %}
+{% block content %}
+<style>
+    .success-container {
+        max-width: 400px;
+        margin: 40px auto;
+        padding: 30px 40px;
+        background: #f8fff8;
+        border-radius: 12px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+        font-family: 'Segoe UI', Arial, sans-serif;
+        text-align: center;
+    }
+    .success-container h1 {
+        color: #28a745;
+        margin-bottom: 20px;
+    }
+    .success-container .info {
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 1.1em;
+    }
+    .success-container a {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 18px;
+        background: #007bff;
+        color: #fff;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+    .success-container a:hover {
+        background: #0056b3;
+    }
+</style>
+<div class="success-container">
+    <h1>Jugador actualizado exitosamente</h1>
+    <div class="info">
+        <p>¡El jugador ha sido actualizado!</p>
+    </div>
+    <a href="/jugadores">Volver a la lista</a>
+</div>
+{% endblock %}
