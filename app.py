@@ -1,5 +1,6 @@
 
 
+
 from flask import Flask, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -98,6 +99,18 @@ def editar_jugador(id):
         except Exception as e:
             flash(f'Error al actualizar jugador: {str(e)}')
     return render_template('editar_jugador.html', jugador=jugador)
+
+# Ruta para eliminar un jugador
+@app.route('/jugador/<int:id>/eliminar', methods=['POST'])
+def eliminar_jugador(id):
+    jugador = Jugador.query.get_or_404(id)
+    try:
+        db.session.delete(jugador)
+        db.session.commit()
+        flash('Jugador eliminado correctamente.')
+    except Exception as e:
+        flash(f'Error al eliminar jugador: {str(e)}')
+    return listar_jugadores()
 
 # Inicializar la base de datos antes de cada request (solo la primera vez)
 _db_initialized = False
