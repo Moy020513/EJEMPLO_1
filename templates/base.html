@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Jugadores{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: linear-gradient(120deg, #e0e7ff 0%, #f8fafc 100%);
+            min-height: 100vh;
+            margin: 0;
+        }
+        header {
+            background: #007bff;
+            color: #fff;
+            padding: 24px 0 12px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        header h1 {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+        }
+        main {
+            padding: 30px 10px 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{% block header %}App de Jugadores{% endblock %}</h1>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
