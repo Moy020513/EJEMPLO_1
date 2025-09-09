@@ -31,6 +31,10 @@
 <body>
     <header>
         <h1>{% block header %}App de Jugadores{% endblock %}</h1>
+        <nav style="margin-top:10px;">
+            <a href="/" style="color:#fff; text-decoration:none; margin-right:18px; font-weight:bold;">Crear jugador</a>
+            <a href="/jugadores" style="color:#fff; text-decoration:none; font-weight:bold;">Lista de jugadores</a>
+        </nav>
     </header>
     <main>
         {% block content %}{% endblock %}
