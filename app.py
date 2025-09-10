@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -65,7 +66,11 @@ def hello_world():
             return render_template('create_jugador.html')
     
     return render_template('create_jugador.html')
-
+# Ruta para listar jugadores
+@app.route('/jugadores')
+def listar_jugadores():
+    jugadores = Jugador.query.all()
+    return render_template('listar_jugadores.html', jugadores=jugadores)
 @app.route('/admin/init-db')
 def admin_init_db():
     try:

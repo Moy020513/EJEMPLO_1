@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Jugadores{% endblock %}
+{% block header %}Jugadores Registrados{% endblock %}
+{% block content %}
+<style>
+    .jugadores-table {
+        width: 100%;
+        max-width: 800px;
+        margin: 30px auto;
+        border-collapse: collapse;
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .jugadores-table th, .jugadores-table td {
+        padding: 12px 16px;
+        text-align: left;
+    }
+    .jugadores-table th {
+        background: #007bff;
+        color: #fff;
+        font-weight: bold;
+    }
+    .jugadores-table tr:nth-child(even) {
+        background: #f2f6fc;
+    }
+</style>
+<table class="jugadores-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Equipo</th>
+            <th>Edad</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for jugador in jugadores %}
+        <tr>
+            <td>{{ jugador.id }}</td>
+            <td>{{ jugador.nombre }}</td>
+            <td>{{ jugador.ap_paterno }}</td>
+            <td>{{ jugador.ap_materno }}</td>
+            <td>{{ jugador.equipo }}</td>
+            <td>{{ jugador.edad }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6" style="text-align:center;">No hay jugadores registrados.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
