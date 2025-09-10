@@ -1,4 +1,5 @@
 
+
 from flask import Flask, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -80,7 +81,23 @@ def admin_init_db():
     except Exception as e:
         return f'Error: {str(e)}'
 
-
+# Ruta para mostrar el formulario de actualización y actualizar un jugador
+@app.route('/jugador/<int:id>/editar', methods=['GET', 'POST'])
+def editar_jugador(id):
+    jugador = Jugador.query.get_or_404(id)
+    if request.method == 'POST':
+        try:
+            jugador.nombre = request.form['nombre']
+            jugador.ap_paterno = request.form['ap_paterno']
+            jugador.ap_materno = request.form['ap_materno']
+            jugador.equipo = request.form['equipo']
+            jugador.edad = int(request.form['edad'])
+            db.session.commit()
+            flash('Jugador actualizado correctamente.')
+            return render_template('jugador_actualizado.html')
+        except Exception as e:
+            flash(f'Error al actualizar jugador: {str(e)}')
+    return render_template('editar_jugador.html', jugador=jugador)
 
 # Inicializar la base de datos antes de cada request (solo la primera vez)
 _db_initialized = False
